@@ -1,24 +1,9 @@
 require "test_helper"
 
 describe Trip do
-  it "can be instantiated" do
-    # Your code here
-  end
+  let(:trip) { Trip.new }
 
-  it "will have the required fields" do
-    # Your code here
-  end
-
-  describe "relationships" do
-    # Your tests go here
-  end
-
-  describe "validations" do
-    # Your tests go here
-  end
-
-  # Tests for methods you create should go here
-  describe "custom methods" do
-    # Your tests here
+  it "must be valid" do
+    value(trip).must_be :valid?
   end
 end
