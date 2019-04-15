@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: MyString
+  integer,: MyString
+  driver_id: MyString
+  integer,: MyString
+  passenger_id: MyString
+  integer,: MyString
+  date: MyString
+  date,: MyString
+  rating: 
+  cost: 
+
+two:
+  id: MyString
+  integer,: MyString
+  driver_id: MyString
+  integer,: MyString
+  passenger_id: MyString
+  integer,: MyString
+  date: MyString
+  date,: MyString
+  rating: 
+  cost: 
