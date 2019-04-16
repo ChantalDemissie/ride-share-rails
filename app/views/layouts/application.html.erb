@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RideShareRails</title>
+    <title>RideShareRails!</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +9,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+    <Header>
+    <nav class="nav_list">
+      <ul>
+        <li>RideShareRails!</li> 
+        <li>Drivers</li> 
+        <li>Passengers</li>
+      </ul>
+    </nav>
+  </Header>
+
   <body>
     <%= yield %>
   </body>
+
+  <footer>  
+  <p> © Chantal and Rosalyn Development 2019</p>
+  </footer>
 </html>

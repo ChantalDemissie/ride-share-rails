@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :trips
-  resources :drivers
-  resources :passengers
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'trips#index'
+
+  # resources :trips
+  # resources :drivers
+  # resources :passengers
+
+  get '/trips', to: 'trips#index', as: 'trips'
 end
