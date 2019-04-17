@@ -1,0 +1,18 @@
+<h2>Add a Passenger</h2>
+
+<%= form_with model: @passenger, class: 'Create_passenger' do |f| %>
+<p><strong>Add Passenger Details Below</strong></p>
+
+  <div>
+    <%= f.label :name, "Passenger Name:" %>
+    <%= f.text_field :name, placeholder: Enter Full Name %>
+  </div>
+
+  <div>
+    <%= f.label :description, "Phone Number:" %>
+    <%= f.text_field :description, placeholder: 111-222-3333 %>
+  </div>
+
+  <%= f.submit "Create", class: 'Creat_class_button' %>
+
+<% end %>
