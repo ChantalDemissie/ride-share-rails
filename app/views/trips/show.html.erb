@@ -1,0 +1,28 @@
+<h2>Trip Details</h2>
+
+<table class='trip_details'>
+
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Driver_id</th>
+    <th>Passenger_id</th>
+    <th>Cost</th>
+    <th>Rating</th>
+    <th>Details</th>
+
+  </tr>
+
+    <% @trips.each do | trip | %>
+  <tr>
+
+    <td><%= link_to trip.id, show_passenger_path%></td> 
+    <td><%= link_to trip.date, show_passenger_path%></td> 
+    <td><%= link_to trip.driver_id, show_passenger_path%></td> 
+    <td><%= link_to trip.passenger_id, show_passenger_path%></td> 
+    <td><%= link_to "$ #{trip.cost/100.to_f}", show_passenger_path%></td> 
+    <td><%= link_to trip.rating, show_passenger_path%></td> 
+  </tr>
+    <% end %>
+
+</table>
