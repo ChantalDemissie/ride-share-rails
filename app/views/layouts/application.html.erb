@@ -11,15 +11,29 @@
 
   <body>
     <header>
-    <nav class="nav_list">
-      <ul>
-        <li><%= link_to 'Cabbie', home_path %></li> 
-        <li>Drivers</li> 
-        <li><%= link_to 'Passengers', new_passenger_path %></li> 
-        <li><%= link_to 'Home', home_path %></li> 
-      </ul>
-    </nav>
-  </header>
+    <div class="nav_list">
+    <a><%= link_to 'Cabbie', home_path %></a> 
+    <a><%= link_to 'Home', home_path %></a> 
+  <div class="dropdown">
+    <button class="dropbtn">Drivers 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a> View Drivers</a>
+      <a> Create a new Driver</a>
+    </div>
+        <button class="dropbtn">Passengers 
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <a> View Passengers</a>
+      <a><%= link_to 'Create a new Passenger', new_passenger_path %></a>
+    </div>
+  </div> 
+</div>
+    </header>
+    
+    
     <main>
     <%= yield %>
     </main>
@@ -29,3 +43,4 @@
 </body>
 
 </html>
+
