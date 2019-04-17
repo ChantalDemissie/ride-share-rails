@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   resources :drivers
   resources :passengers
 
+  get '/passengers/:id', to: 'passenger#show', as: 'show_passenger'
+
+
 end
