@@ -2,7 +2,7 @@
 
 class PassengersController < ApplicationController
   def create
-    @passenger = Passenger.new(task_params)
+    @passenger = Passenger.new(passenger_params)
     if @passenger.save
       redirect_to passenger_path(@passenger.id)
     else
@@ -35,7 +35,7 @@ class PassengersController < ApplicationController
     passenger_id = params[:id]
     passenger = Passenger.find(task_id)
 
-    passenger.update(task_params)
+    passenger.update(passenger_params)
     # redirect_to task_path(task.id)
   end
 
@@ -52,7 +52,7 @@ end
 
 private
 
-def task_params
+def passenger_params
     params.require(:task).permit(
       :name,
       :phone_num

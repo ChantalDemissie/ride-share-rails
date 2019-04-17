@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   get '/passengers/:id', to: 'passenger#show', as: 'show_passenger'
   patch '/passengers/:id', to: 'passengers#update'
-  delete '/passengers/:id', to: 'passengers#destroy'
+  delete '/passengers/:id', to: 'passengers#destroy', as: 'delete_passenger'
 
-  get '/passengers/:id/:id', to: 'trip#show', as: 'trip_details'
+  get '/passengers/:id/trips/:id', to: 'trips#show', as: 'trip_details'
 
 
 

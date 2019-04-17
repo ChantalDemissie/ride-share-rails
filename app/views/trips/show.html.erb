@@ -13,16 +13,13 @@
 
   </tr>
 
-    <% @trips.each do | trip | %>
   <tr>
-
-    <td><%= link_to trip.id, show_passenger_path%></td> 
-    <td><%= link_to trip.date, show_passenger_path%></td> 
-    <td><%= link_to trip.driver_id, show_passenger_path%></td> 
-    <td><%= link_to trip.passenger_id, show_passenger_path%></td> 
-    <td><%= link_to "$ #{trip.cost/100.to_f}", show_passenger_path%></td> 
-    <td><%= link_to trip.rating, show_passenger_path%></td> 
+    <td><%= link_to @trips.id, trip_details_path%></td> 
+    <td><%= link_to @trips.date, trip_details_path%></td> 
+    <td><%= link_to @trips.driver_id, trip_details_path%></td> 
+    <td><%= link_to @trips.passenger_id, trip_details_path%></td> 
+    <td><%= link_to "$ #{@trips.cost/100.to_f}", trip_details_path%></td> 
+    <td><%= link_to @trips.rating, trip_details_path%></td> 
   </tr>
-    <% end %>
 
 </table>
