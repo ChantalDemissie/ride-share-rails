@@ -11,6 +11,11 @@
 
   <body>
     <header>
+      <div>
+        <a><%= link_to 'Cabbie', home_path %></a> 
+        <a><%= link_to 'Home', home_path %></a> 
+      </div> 
+
       <div class="nav_list">
         <div class="dropdown">
           <button class="dropbtn">Drivers 
@@ -29,9 +34,6 @@
             <a><%= link_to 'View all Passengers', passengers_path %></a>
             <a><%= link_to 'Create a new Passenger', new_passenger_path %></a>
           </div>
-          <a><%= link_to 'Cabbie', home_path %></a> 
-          <a><%= link_to 'Home', home_path %></a> 
-          </div> 
         </div>
       </div>
     </header>
