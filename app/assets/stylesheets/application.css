@@ -14,13 +14,18 @@
  *= require_self
  */
  body {
-  display: grid;
-  grid-template: 1fr  /1fr 1fr;
+  display: flex;
+  flex-direction: column;
   background-color: white;
 }
 
 main {
-  grid-column: 1/ span 2;
+  padding: 0 30px;
+}
+
+.passenger_list_table {
+  width: 100%;
+  text-align: left;
 }
 
 header {

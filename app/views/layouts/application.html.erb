@@ -9,7 +9,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-    <Header>
+  <body>
+    <header>
     <nav class="nav_list">
       <ul>
         <li><%= link_to 'RideShareRails!', home_path %></li> 
@@ -18,13 +19,13 @@
         <li><%= link_to 'Home', home_path %></li> 
       </ul>
     </nav>
-  </Header>
-
-  <body>
+  </header>
+    <main>
     <%= yield %>
-  </body>
-
+    </main>
   <footer>  
   <p> © Chantal and Rosalyn Development 2019</p>
   </footer>
+</body>
+
 </html>

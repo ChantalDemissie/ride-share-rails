@@ -1,5 +1,6 @@
-<table>
 <h2>Passenger List</h2>
+
+<table class="passenger_list_table">
 
   <tr>
     <th>ID</th>
@@ -7,14 +8,15 @@
     <th>Phone Number</th>
     <th>Edit</th>
     <th>Delete</th>
+  </tr>
 
     <% @passengers.each do | passenger | %>
-  </tr>
-    <th><%= link_to passenger.id, passenger_path(passenger.id) %></th> 
-    <th><%= link_to passenger.name, passenger_path(passenger.id) %></th> 
-    <th><%= link_to passenger.phone_num, passenger_path(passenger.id) %></th> 
-    <li><%= link_to "Edit", edit_passenger_path(passenger.id) %></li>
-    <li><%= link_to "Delete", edit_passenger_path(passenger.id) , method: :delete, data: { confirm: "Do you really want to delete?" } %></li>
+  <tr>
+    <td><%= link_to passenger.id, passenger_path(passenger.id) %></td> 
+    <td><%= link_to passenger.name, passenger_path(passenger.id) %></td> 
+    <td><%= link_to passenger.phone_num, passenger_path(passenger.id) %></td> 
+    <td><%= link_to "Edit", edit_passenger_path(passenger.id) %></td>
+    <td><%= link_to "Delete", edit_passenger_path(passenger.id) , method: :delete, data: { confirm: "Do you really want to delete?" } %></td>
   </tr>
     <% end %>
 

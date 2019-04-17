@@ -18,7 +18,8 @@ class PassengersController < ApplicationController
   # def show_passenger
   def show
     passenger_id = params[:id]
-    @trips = Trip.find_by(id: passenger_id)
+    @trips = Trip.where(passenger_id: passenger_id.to_i)
+    @earnings = @trips.map { |trip| trip.cost }.sum 
     # redirect_to tasks_path unless @task
   end
 
