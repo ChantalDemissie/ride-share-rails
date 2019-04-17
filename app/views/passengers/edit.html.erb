@@ -1,7 +1,7 @@
-<h2>New Passenger Form</h2>
+<h2>Edit Passenger Form</h2>
 
-<%= form_with model: @Passenger, class: 'create_passenger' do |f| %>
-<p><strong>Please fill out the details of your Passenger</strong></p>
+<%= form_with model: @Passenger, class: 'edit_passenger' do |f| %>
+<p><strong>Please fill out the NEW details of your Passenger</strong></p>
 
   <div>
     <%= f.label :name, "Name of Passenger:" %>
@@ -13,6 +13,6 @@
     <%= f.text_field :description, placeholder: "111-222-3333" %>
   </div>
 
-  <%= f.submit "Create A New Passenger", class: 'create_class_button' %>
+  <%= f.submit "Edit this Passenger", class: 'edit_class_button' %>
 
 <% end %>
