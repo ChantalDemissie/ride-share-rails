@@ -1,6 +1,9 @@
-<table>
-<h2>Passenger List</h2>
-<h2>Total amount spent on rides: $<%=@earnings/100.to_f%></h2>
+<h2>Passenger Trip Details</h2>
+<h2>The total amount spent on rides is: $<%=@earnings/100.to_f%></h2>
+<h2>Request a New Trip</h2>
+
+
+<table class='passenger_trip_list'>
 
   <tr>
     <th>ID</th>
@@ -11,16 +14,17 @@
     <th>Rating</th>
     <th>Details</th>
 
+  </tr>
 
     <% @trips.each do | trip | %>
+  <tr>
 
-  </tr>
-    <th><%= link_to trip.id, show_passenger_path%></th> 
-    <th><%= link_to trip.date, show_passenger_path%></th> 
-    <th><%= link_to trip.driver_id, show_passenger_path%></th> 
-    <th><%= link_to trip.passenger_id, show_passenger_path%></th> 
-    <th><%= link_to "$ #{trip.cost/100.to_f}", show_passenger_path%></th> 
-    <th><%= link_to trip.rating, show_passenger_path%></th> 
+    <td><%= link_to trip.id, show_passenger_path%></td> 
+    <td><%= link_to trip.date, show_passenger_path%></td> 
+    <td><%= link_to trip.driver_id, show_passenger_path%></td> 
+    <td><%= link_to trip.passenger_id, show_passenger_path%></td> 
+    <td><%= link_to "$ #{trip.cost/100.to_f}", show_passenger_path%></td> 
+    <td><%= link_to trip.rating, show_passenger_path%></td> 
   </tr>
     <% end %>
 
