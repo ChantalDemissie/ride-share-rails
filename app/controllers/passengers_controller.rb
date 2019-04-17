@@ -18,7 +18,7 @@ class PassengersController < ApplicationController
   # def show_passenger
   def show
     passenger_id = params[:id]
-    @passenger = Passenger.find_by(id: passenger_id)
+    @trips = Trip.find_by(id: passenger_id)
     # redirect_to tasks_path unless @task
   end
 
