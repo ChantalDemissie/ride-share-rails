@@ -41,6 +41,18 @@ class PassengersController < ApplicationController
 
 
   def delete
+    passenger_id = params[:id]
+
+    passenger = Passenger.find_by(id: passenger_id)
+
+    unless passenger
+      head :not_found
+      return
+    end
+
+    passenger.destroy
+
+    redirect_to passengers_path
     # error validation required
   end
 
