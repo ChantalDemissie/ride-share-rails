@@ -9,7 +9,6 @@ class TripsController < ApplicationController
     end
   end
 
-  # def list_passenger
   def index
     @trips = Trip.all.sort_by(&:id)
   end
@@ -28,11 +27,18 @@ class TripsController < ApplicationController
 
   def update
     trip_id = params[:id]
-    trip = Trip.find(task_id)
+    trip = Trip.find_by(id: trip_id)
 
     trip.update(trip_params)
-    # redirect_to task_path(task.id)
   end
+
+  def update_rating
+    trip_id = params[:id]
+    trip = Trip.find_by(id: trip_id)
+
+    trip.update(rating: params[:rating])
+  end
+
 
 
   def delete
