@@ -19,13 +19,13 @@
     <% @trips.each do | trip | %>
   <tr>
 
-    <td><%= link_to trip.id%></td> 
-    <td><%= link_to trip.date%></td> 
-    <td><%= link_to trip.driver_id%></td> 
-    <td><%= link_to trip.passenger_id%></td> 
-    <td><%= link_to "$ #{trip.cost/100.to_f}"%></td> 
-    <td><%= link_to trip.rating%></td> 
-    <td><%= link_to 'Details', trip%></td> 
+    <td><%= trip.id%></td> 
+    <td><%= trip.date%></td> 
+    <td><%= trip.driver_id%></td> 
+    <td><%= trip.passenger_id%></td> 
+    <td><%= "$ #{trip.cost/100.to_f}"%></td> 
+    <td><%= trip.rating%></td> 
+    <td><%= link_to 'Details', show_trip_details_path(trip.passenger_id, trip.id)%></td> 
 
   </tr>
     <% end %>

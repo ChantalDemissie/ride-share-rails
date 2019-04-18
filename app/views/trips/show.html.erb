@@ -15,14 +15,14 @@
   </tr>
 
   <tr>
-    <td><%= link_to @trips.id%></td> 
-    <td><%= link_to @trips.date%></td> 
-    <td><%= link_to @trips.driver_id%></td> 
-    <td><%= link_to @trips.passenger_id, show_passenger_path%></td> 
-    <td><%= link_to "$ #{@trips.cost/100.to_f}"%></td> 
-    <td><%= link_to @trips.rating%></td> 
-    <td><%= link_to "Edit", edit_trip_path(@trips.id) %></td>
-    <td><%= link_to "Delete", delete_trip_path(@trips.id), method: :delete, data: { confirm: "Do you really want to delete?" } %></td>
+    <td><%= link_to @trip.id%></td> 
+    <td><%= link_to @trip.date%></td> 
+    <td><%= link_to @trip.driver_id%></td> 
+    <td><%= link_to @trip.passenger_id%></td> 
+    <td><%= link_to "$ #{@trip.cost/100.to_f}"%></td> 
+    <td><%= link_to @trip.rating%></td> 
+    <td><%= link_to "Edit", edit_trip_path(@trip.id) %></td>
+    <td><%= link_to "Delete", delete_trip_path(@trip.id), method: :delete, data: { confirm: "Do you really want to delete?" } %></td>
 
   </tr>
 

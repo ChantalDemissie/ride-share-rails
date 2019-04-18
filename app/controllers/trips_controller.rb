@@ -15,7 +15,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trips = Trip.find_by_id(params[:id])
+    @trip = Trip.find_by_id(params[:trip_id])
   end
 
   def edit
@@ -51,7 +51,6 @@ class TripsController < ApplicationController
     # error validation required
   end
 
-  # add new trip for specific passenger
   def new
     @trip = Trip.new
   end
