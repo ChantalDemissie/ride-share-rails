@@ -7,17 +7,19 @@ Rails.application.routes.draw do
   resources :drivers
   resources :passengers
 
-  # resources :passengers do
-  #   resources :trips
-  # end
-
   post '/passengers', to: 'passengers#create'
-
   get '/passengers/:id', to: 'passenger#show', as: 'show_passenger'
   patch '/passengers/:id', to: 'passengers#update'
   delete '/passengers/:id', to: 'passengers#destroy', as: 'delete_passenger'
 
   get '/passengers/:passenger_id/trips/:trip_id', to: 'trips#show', as: 'show_trip_details'
   delete '/trips/:id', to: 'trips#destroy', as: 'delete_trip'
+  # get '/passengers/:id/trips/:id', to: 'trips#show', as: 'trip_details'
+
+
+  post '/drivers', to: 'drivers#create'
+  get '/drivers/:id', to: 'driver#show'
+  patch '/drivers/:id', to: 'drivers#update'
+  delete '/drivers/:id', to: 'drivers#delete'
 
 end

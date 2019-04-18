@@ -1,0 +1,22 @@
+<h2>Drivers List</h2>
+<table class="passenger_list_table">
+
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>VIN Number</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+  <% @drivers.each do |driver| %>
+  <tr>
+    <td><%= link_to driver.id, driver_path(driver.id) %></td>
+    <td><%= link_to driver.name, driver_path(driver.id) %></td>
+    <td><%= link_to driver.vin, driver_path(driver.id) %></td>
+    <td><%= link_to "Edit", edit_driver_path(driver.id) %></td>
+    <td><%= link_to "Delete", driver_path(driver.id), method: :delete, data: { confirm: "Do you really want to delete?" } %></td>
+  </tr>
+  <% end %>
+
+</table>
