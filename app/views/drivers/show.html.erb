@@ -3,3 +3,27 @@
 <h2>Total amount earned: $<%= @driver.total_earnings %> </h2>
 <h2>Average Rating: <%= @driver.average_rating %> </h2>
 <h2>List of Trips Driver Has Driven<h2>
+<table class='passenger_trip_list'>
+  <tr>
+    <th>ID</th>
+    <th>Date</th>
+    <th>Driver_id</th>
+    <th>Passenger_id</th>
+    <th>Cost</th>
+    <th>Rating</th>
+    <th>Details</th>
+  </tr>
+
+  <% @driver.trips.each do |trip| %>
+  <tr>
+    <td><%= trip.id%></td>
+    <td><%= trip.date%></td>
+    <td><%= trip.driver_id%></td>
+    <td><%= trip.passenger_id%></td>
+    <td><%= "$ #{trip.cost/100.to_f}"%></td>
+    <td><%= trip.rating%></td>
+    <td><%= link_to 'Details', show_trip_details_path(trip.passenger_id, trip.id)%></td>
+  </tr>
+  <% end %>
+
+</table>

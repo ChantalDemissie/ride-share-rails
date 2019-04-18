@@ -15,7 +15,7 @@ class Driver < ApplicationRecord
   def total_earnings
     total_earnings = 0
     self.trips.each do |trip|
-      earnings = (trip.cost - 1.65) * 0.8
+      earnings = (trip.cost / 100.0 - 1.65) * 0.8
       total_earnings += earnings
     end
     return total_earnings.round(2)
