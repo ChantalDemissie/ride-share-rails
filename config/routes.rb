@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   patch '/passengers/:id', to: 'passengers#update'
   delete '/passengers/:id', to: 'passengers#destroy', as: 'delete_passenger'
 
-  get '/passengers/:id/trips/:id', to: 'trips#show', as: 'trip_details'
+  get '/passengers/:id/trips/:id', to: 'trips#show'
 end

@@ -9,17 +9,16 @@
     <th>Passenger_id</th>
     <th>Cost</th>
     <th>Rating</th>
-    <th>Details</th>
 
   </tr>
 
   <tr>
-    <td><%= link_to @trips.id, trip_details_path%></td> 
-    <td><%= link_to @trips.date, trip_details_path%></td> 
-    <td><%= link_to @trips.driver_id, trip_details_path%></td> 
-    <td><%= link_to @trips.passenger_id, trip_details_path%></td> 
-    <td><%= link_to "$ #{@trips.cost/100.to_f}", trip_details_path%></td> 
-    <td><%= link_to @trips.rating, trip_details_path%></td> 
+    <td><%= link_to @trips.id%></td> 
+    <td><%= link_to @trips.date%></td> 
+    <td><%= link_to @trips.driver_id%></td> 
+    <td><%= link_to @trips.passenger_id%></td> 
+    <td><%= link_to "$ #{@trips.cost/100.to_f}"%></td> 
+    <td><%= link_to @trips.rating%></td> 
   </tr>
 
 </table>
