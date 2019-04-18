@@ -1,0 +1,28 @@
+<h2>Edit Driver Form</h2>
+
+<%= form_with model: @driver do |f| %>
+<p><strong>Please fill out any changes to your Driver</strong></p>
+
+  <div>
+    <%= f.label :name, "Name of Driver:" %>
+    <%= f.text_field :name, placeholder: "Name" %>
+  </div>
+
+  <div>
+    <%= f.label :vin, "VIN Number:" %>
+    <%= f.text_field :vin, placeholder: "17 digits please" %>
+  </div>
+
+  <!-- <div>
+    <%# f.label :make, "Car Make:" %>
+    <%# f.text_field :make, placeholder: "BMW" %>
+  </div>
+
+  <div>
+    <%# f.label :model, "Car Model:" %>
+    <%# f.text_field :model, placeholder: "M3" %>
+  </div> -->
+
+  <%= f.submit "Edit this Driver" %>
+
+<% end %>

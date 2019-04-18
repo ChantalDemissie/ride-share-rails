@@ -1,0 +1,27 @@
+<h2>New Driver Form</h2>
+
+<%= form_with model: Driver.new do |form| %>
+  <p><strong>Please fill out the details of your Driver</strong></p>
+
+  <div>
+    <%= form.label :name, "Name of Driver:" %>
+    <%= form.text_field :name, placeholder: "Name" %>
+  </div>
+
+  <div>
+    <%= form.label :vin, "Vin number:" %>
+    <%= form.text_field :vin, placeholder: "17 digits please" %>
+  </div>
+
+  <!-- <div>
+    <%# f.label :make, "Car Make:" %>
+    <%# f.text_field :make, placeholder: "BMW" %>
+  </div>
+
+  <div>
+    <%# f.label :model, "Car Model:" %>
+    <%# f.text_field :model, placeholder: "M3" %>
+  </div> -->
+
+  <%= form.submit "Submit" %>
+<% end %>
