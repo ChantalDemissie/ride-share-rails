@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   resources :drivers
   resources :passengers
 
-  resources :passengers do
-    resources :trips
-  end
+  # resources :passengers do
+  #   resources :trips
+  # end
 
   post '/passengers', to: 'passengers#create'
 
@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   delete '/passengers/:id', to: 'passengers#destroy', as: 'delete_passenger'
 
   get '/passengers/:id/trips/:id', to: 'trips#show'
+  delete '/trips/:id', to: 'trips#destroy', as: 'delete_trip'
+
 end

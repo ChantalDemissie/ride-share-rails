@@ -1,0 +1,34 @@
+<h2>Edit Trip Form</h2>
+
+<%= form_with model: @Passenger, class: 'edit_passenger' do |f| %>
+<p><strong>Please fill out the EDIT details of your Trip</strong></p>
+
+  <div>
+    <%= f.label :date, "Date:" %>
+    <%= f.text_field :name, placeholder: "Name" %>
+  </div>
+
+  <div>
+    <%= f.label :price, "Price:" %>
+    <%= f.text_field :description, placeholder: "111-222-3333" %>
+  </div>
+
+    <div>
+    <%= f.label :passenger, "Passenger:" %>
+    <%= f.text_field :description, placeholder: "111-222-3333" %>
+  </div>
+
+  <div>
+    <%= f.label :rating, "Rating:" %>
+    <%= f.text_field :description, placeholder: "111-222-3333" %>
+  </div>
+
+  <div>
+    <%= f.label :driver, "Driver:" %>
+    <%= f.text_field :description, placeholder: "111-222-3333" %>
+  </div>
+
+
+  <%= f.submit "Edit this Passenger", class: 'edit_class_button' %>
+
+<% end %>
