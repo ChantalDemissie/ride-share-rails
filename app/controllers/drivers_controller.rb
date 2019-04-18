@@ -22,12 +22,6 @@ class DriversController < ApplicationController
     @driver = Driver.find(params[:id])
   end
 
-#   #def show_earnings
-#   #need to figure out math for this ignore for now!
-#   def total_earnings
-#     trips.sum(:cost-1.65) * 0.80
-#   end
-
   #edit a driver
   def edit
     @driver = Driver.find(params[:id])
@@ -55,9 +49,4 @@ class DriversController < ApplicationController
     redirect_to drivers_path
   end
 
-  #find average drivers rating
-#   def average_rating(driver)
-#     driver_trips = Trip.find_all_by(driver_id: driver.id)
-#     insert code to find average
-#   end
-end
+end 
