@@ -19,18 +19,12 @@ describe PassengersController do
   #   end
   # end
 
-  describe "show" do
+  # describe "show" do
     # it 'can get a valid passenger' do
     #   get passenger_path(passenger.id)
 
     #   must_respond_with :success
     # end
-
-    it 'will redirect for an invalid passenger' do
-      get passenger_path(-1)
-
-      must_respond_with :redirect
-    end
   end
 
   # describe "edit" do
@@ -84,51 +78,51 @@ describe PassengersController do
   #   end
   # end
 
-  describe "create" do
-    it 'can create a new passenger' do
-      passenger_hash = {
-        passenger: {
-          name: 'New Passenger',
-          phone_num: '123-234-5443',
-        }
-      }
-      expect do
-        post passengers_path, params: passenger_hash
-      end.must_change 'Passenger.count', 1
+  # describe "create" do
+  #   it 'can create a new passenger' do
+  #     passenger_hash = {
+  #       passenger: {
+  #         name: 'New Passenger',
+  #         phone_num: '123-234-5443',
+  #       }
+  #     }
+  #     expect do
+  #       post passengers_path, params: passenger_hash
+  #     end.must_change 'Passenger.count', 1
 
-      new_passenger = Passenger.find_by(name: passenger_hash[:passenger][:name])
-      expect(new_passenger.phone_num).must_equal passenger_hash[:passenger][:phone_num]
+  #     new_passenger = Passenger.find_by(name: passenger_hash[:passenger][:name])
+  #     expect(new_passenger.phone_num).must_equal passenger_hash[:passenger][:phone_num]
 
-      must_respond_with :redirect
-      must_redirect_to passenger_path(new_passenger.id)
-    end
-  end
+  #     must_respond_with :redirect
+  #     must_redirect_to passenger_path(new_passenger.id)
+  #   end
+  # end
 
-  describe "destroy" do
-    it 'removes the passenger from the database' do
-      passenger = Passenger.create!(name: 'Test Passenger', phone_num: '111-222-3333')
+  # describe "destroy" do
+  #   it 'removes the passenger from the database' do
+  #     passenger = Passenger.create!(name: 'Test Passenger', phone_num: '111-222-3333')
 
-      expect do
-        delete passenger_path(passenger)
-      end.must_change 'Passenger.count', -1
+  #     expect do
+  #       delete passenger_path(passenger)
+  #     end.must_change 'Passenger.count', -1
 
-      must_respond_with :redirect
-      must_redirect_to passengers_path
+  #     must_respond_with :redirect
+  #     must_redirect_to passengers_path
 
-      after_passenger = Passenger.find_by(id: passenger.id)
-      expect(after_passenger).must_be_nil
-    end
+  #     after_passenger = Passenger.find_by(id: passenger.id)
+  #     expect(after_passenger).must_be_nil
+  #   end
 
-    it 'returns a 404 if the passenger does not exist' do
-      passenger_id = 123_456
+  #   it 'returns a 404 if the passenger does not exist' do
+  #     passenger_id = 123_456
 
-      expect(Passenger.find_by(id: passenger_id)).must_be_nil
+  #     expect(Passenger.find_by(id: passenger_id)).must_be_nil
 
-      expect do
-        delete passenger_path(passenger_id)
-      end.wont_change 'Passenger.count'
+  #     expect do
+  #       delete passenger_path(passenger_id)
+  #     end.wont_change 'Passenger.count'
 
-      must_respond_with :not_found
-    end
-  end
+  #     must_respond_with :not_found
+  #   end
+  # end
 end
