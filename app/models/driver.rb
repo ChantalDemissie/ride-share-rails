@@ -1,4 +1,6 @@
 class Driver < ApplicationRecord
+ validates :name, presence: true, {message: "Please enter a name"}
+ validates :vin, presence: true, {message: "Please enter a VIN"}
   #finds a list of all trips by driver id
   def trips
     Trip.where("driver_id = #{self.id}")
