@@ -16,10 +16,4 @@ Rails.application.routes.draw do
   delete '/trips/:id', to: 'trips#destroy', as: 'delete_trip'
   # get '/passengers/:id/trips/:id', to: 'trips#show', as: 'trip_details'
 
-
-  post '/drivers', to: 'drivers#create'
-  get '/drivers/:id', to: 'driver#show'
-  patch '/drivers/:id', to: 'drivers#update'
-  delete '/drivers/:id', to: 'drivers#delete'
-
 end

@@ -1,6 +1,7 @@
 class DriversController < ApplicationController
 
   def new
+    @driver = Driver.new
   end
 
   def create
@@ -9,9 +10,12 @@ class DriversController < ApplicationController
       name: params[:driver][:name],
       vin: params[:driver][:vin]
     )
-    @driver.save
-    #error validation required
-    redirect_to drivers_path
+    if @driver.save
+      #error validation required
+      redirect_to drivers_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -28,25 +32,35 @@ class DriversController < ApplicationController
   end
 
   def update
-    @driver = Driver.find(params[:id])
-
     begin
-      result = @driver.update({
+      @driver = Driver.find(params[:id])
+    rescue
+      flash[:error] = "Could not find driver with id: #{params['id']}"
+      redirect_to drivers_path
+      return
+    end
+    result = @driver.update({
         name: params[:driver][:name],
         vin: params[:driver][:vin]
-      })
+    })
+    if result
       redirect_to drivers_path
-    rescue
+    else
       render :new
-      return
     end
   end
 
   #delete driver
   def destroy
-    driver = Driver.find(params[:id])
+    begin
+      driver = Driver.find(params[:id])
+    rescue
+      flash[:error] = "Could not find driver with id: #{params['id']}"
+      redirect_to drivers_path
+      return
+    end
     driver.destroy
     redirect_to drivers_path
   end
 
-end 
+end

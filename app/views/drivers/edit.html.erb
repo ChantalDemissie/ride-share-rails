@@ -1,5 +1,15 @@
 <h2>Edit Driver Form</h2>
 
+<% if @driver.errors.any? %>
+  <ul class="errors">
+    <% @driver.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @driver do |f| %>
 <p><strong>Please fill out any changes to your Driver</strong></p>
 
