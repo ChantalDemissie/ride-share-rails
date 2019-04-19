@@ -1,4 +1,4 @@
-.passenger_trip_list{
+.passenger_trip_list .passenger_list_table {
   width: 100%;
   text-align: left;
 }
@@ -7,9 +7,6 @@
   font-size: 20px;
 }
 
-.edit_passenger {
-  font-size: 20px;
-}
 
 // Place all the styles related to the Passengers controller here.
 // They will automatically be included in application.css.

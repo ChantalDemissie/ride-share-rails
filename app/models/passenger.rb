@@ -1,8 +1,7 @@
 class Passenger < ApplicationRecord
 
-  validates :name, presence: true
-  validates :phone_num, presence: true
-
+  validates_presence_of :name , :message => 'Must provide name'
+  validates_presence_of :phone_num ,:message => 'Must provide phone number'
 
 end
  

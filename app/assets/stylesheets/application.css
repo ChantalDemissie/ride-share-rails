@@ -1,64 +1,27 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
  body {
   display: flex;
   flex-direction: column;
   background-color: white;
-}
-
-.nav_list li:first-child{
-  font-size: 30px;
-}
-
-main {
-  padding: 0 30px;
-}
-
-.passenger_list_table {
-  width: 100%;
-  text-align: left;
+  font-family: 'Roboto', sans-serif;
+  color: #353535
 }
 
 header {
   background-color: #EFEFF0;
   display: grid;
   grid-column: span 2;
+
+}
+
+.main_options li {
+  margin: 75px;
+  list-style-type: none;
 }
 
 a {
   text-decoration: none;
   color: inherit;
-}
-.nav_list {
   font-weight: bold;
-  font-size:16px;
-}
-
-li:hover {
-  color: #353535
-}
-
-ul  {
-  padding: 0;
-  list-style-type: none;
-}
-
-.nav_list ul {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 footer {
@@ -72,17 +35,10 @@ footer {
 
 footer p {
 text-align: center;
-
-}
-
-.header_text {
-  display: grid;
-  grid-column: span 2;
-
-}
+} 
 
 .dropdown {
-  float: left;
+  float:left;
   overflow: hidden;
 }
 
@@ -90,7 +46,7 @@ text-align: center;
   font-size: 16px;  
   border: none;
   outline: none;
-  color: white;
+  color: black;
   padding: 14px 16px;
   background-color: inherit;
   font-family: inherit;
@@ -98,7 +54,7 @@ text-align: center;
 }
 
 a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
+  background-color: #EAF0CE
 }
 
 .dropdown-content {

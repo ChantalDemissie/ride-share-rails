@@ -1,7 +1,19 @@
+# frozen_string_literal: true
+
 class TripsController < ApplicationController
 
   def create
-    @trip = Trip.new(trip_params)
+    @passenger = Passenger.find_by(id: passenger_id)
+    @driver = Driver.sample
+
+    @trip = Trip.new(
+      driver_id: @driver.id,
+      passenger_id: @passenger.id,
+      date: Time.now,
+      rating: '',
+      cost: ''
+    )
+
     if @trip.save
       redirect_to trip_path(@trip.id)
     else
@@ -9,9 +21,19 @@ class TripsController < ApplicationController
     end
   end
 
-  # def list_passenger
   def index
+    if params[:passenger_id]
+      passenger = Trip.find_by(id: params[:passenger_id])
+      if passenger
+        @trips = passenger.trips
+      else
+        head :not_found
+        return
+      end
+    else
     @trips = Trip.all.sort_by(&:id)
+    end
+
   end
 
   def show
@@ -22,18 +44,35 @@ class TripsController < ApplicationController
     trip_id = params[:id]
     @trip = Trip.find_by(id: trip_id)
 
-    # redirect_to tasks_path if @task.nil?
-
+    head :not_found unless @trip
   end
 
   def update
     trip_id = params[:id]
-    trip = Trip.find(task_id)
+    trip = Trip.find_by(id: trip_id)
 
-    trip.update(trip_params)
-    # redirect_to task_path(task.id)
+    unless trip
+      head :not_found
+      return
+    end
+
+    if trip.update(trip_params)
+      redirect_to trip_path(trip)
+    # else
+    #   render :edit, status: :bad_request
+    end
   end
 
+  def update_rating
+    trip_id = params[:id]
+    trip = Trip.find_by(id: trip_id)
+
+    if trip.update(rating: params[:rating])
+      redirect_to trip_path(trip)
+    # else
+    #   render :edit, status: :bad_request
+    end
+  end
 
   def delete
     trip_id = params[:id]
@@ -46,22 +85,18 @@ class TripsController < ApplicationController
     end
 
     trip.destroy
-
     redirect_to trips_path
-    # error validation required
   end
 
   def new
     @trip = Trip.new
   end
-
-end 
+end
 
 private
 
 def trip_params
   params.require(:task).permit(
-    :id,
     :driver_id,
     :passenger_id,
     :date,

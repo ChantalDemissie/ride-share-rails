@@ -1,6 +1,9 @@
 <h2>Trip Details</h2>
 
-<h3>Rate this trip</h3>
+<%= form_with url: update_rating_path(@trip.id) do |form| %>
+  <%= form.select(:rating, [["1", 1], ["2", 2], ["3", 3],["4",4],["5",5]]) %>
+  <%= form.submit 'Save', class: 'button expand' %>
+<% end %>
 
 <table class='trip_details'>
 
@@ -18,7 +21,7 @@
     <td><%= link_to @trip.id%></td> 
     <td><%= link_to @trip.date%></td> 
     <td><%= link_to @trip.driver_id%></td> 
-    <td><%= link_to @trip.passenger_id%></td> 
+    <td><%= link_to @trip.passenger_id, passenger_path(@trip.passenger_id)%></td> 
     <td><%= link_to "$ #{@trip.cost/100.to_f}"%></td> 
     <td><%= link_to @trip.rating%></td> 
     <td><%= link_to "Edit", edit_trip_path(@trip.id) %></td>
