@@ -3,16 +3,7 @@
 class TripsController < ApplicationController
 
   def create
-    @passenger = Passenger.find_by(id: passenger_id)
-    @driver = Driver.sample
-
-    @trip = Trip.new(
-      driver_id: @driver.id,
-      passenger_id: @passenger.id,
-      date: Time.now,
-      rating: '',
-      cost: ''
-    )
+    @trip = Trip.new(trip_params)
 
     if @trip.save
       redirect_to trip_path(@trip.id)
@@ -68,7 +59,7 @@ class TripsController < ApplicationController
     redirect_to trip_path(trip)
   end
 
-  def delete
+  def destroy
     trip_id = params[:id]
 
     trip = Trip.find_by(id: trip_id)
@@ -90,7 +81,7 @@ end
 private
 
 def trip_params
-  params.require(:task).permit(
+  params.require(:trip).permit(
     :driver_id,
     :passenger_id,
     :date,
