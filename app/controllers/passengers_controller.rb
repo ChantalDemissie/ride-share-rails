@@ -28,11 +28,21 @@ class PassengersController < ApplicationController
   end
 
   def update
-    passenger_id = params[:id]
-    passenger = Passenger.find(passenger_id)
+    begin
+      passenger_id = params[:id]
+      passenger = Passenger.find(passenger_id)
+    rescue
+      flash[:error] = "Could not find passenger with id: #{params['id']}"
+      redirect_to passenger_path(passenger_id)
+      return
+    end
 
-    passenger.update(passenger_params)
-    redirect_to passenger_path(passenger.id)
+    if passenger.update(passenger_params)
+      redirect_to passenger_path(passenger_id)
+    else
+      render :new
+    end
+
   end
 
 
@@ -58,7 +68,7 @@ end
 private
 
 def passenger_params
-  params.require(:task).permit(
+  params.require(:passenger).permit(
     :name,
     :phone_num
   )

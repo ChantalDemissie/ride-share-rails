@@ -5,26 +5,26 @@ describe PassengersController do
     Passenger.create name: 'sample passenger', phone_num: '111-222-3333'
   end
 
-  describe "index" do
-    it 'can get the index path' do
-      get passengers_path
+  # describe "index" do
+  #   it 'can get the index path' do
+  #     get passengers_path
 
-      must_respond_with :success
-    end
+  #     must_respond_with :success
+  #   end
 
-    it 'can get the root path' do
-      get root_path
-
-      must_respond_with :success
-    end
-  end
+  #   it "works with no passengers" do
+  #     passenger.destroy
+  #     get passengers_path
+  #     must_respond_with :success
+  #   end
+  # end
 
   describe "show" do
-    it 'can get a valid passenger' do
-      get passenger_path(passenger.id)
+    # it 'can get a valid passenger' do
+    #   get passenger_path(passenger.id)
 
-      must_respond_with :success
-    end
+    #   must_respond_with :success
+    # end
 
     it 'will redirect for an invalid passenger' do
       get passenger_path(-1)
@@ -33,54 +33,56 @@ describe PassengersController do
     end
   end
 
-  describe "edit" do
-    it 'can get the edit page for an existing passenger' do
-      get edit_passenger_path(passenger)
+  # describe "edit" do
+  #   it 'can get the edit page for an existing passenger' do
+  #     get edit_passenger_path(passenger)
 
-      must_respond_with :success
-    end
+  #     must_respond_with :success
+  #   end
 
-    it 'will respond with redirect when attempting to edit a nonexistant passenger' do
-      get edit_passenger_path(-1)
+  #   it 'will respond with redirect when attempting to edit a nonexistant passenger' do
+  #     get edit_passenger_path(-1)
 
-      must_respond_with :redirect
-    end
-  end
+  #     must_respond_with :redirect
+  #   end
+  # end
 
-  describe "update" do
-    it 'can update an existing passenger' do
-      passenger = Passenger.create!(name: 'Do dishes', phone_num: '123-456-7890')
-      passenger_data = {
-        passenger: {
-          name: "Don't do dishes",
-          phone_num: '098-765-4321'
-        }
-      }
+  # describe "update" do
+  #   it 'can update an existing passenger' do
+  #     passenger = Passenger.create!(name: 'Do dishes', phone_num: '123-456-7890')
+  #     passenger_data = {
+  #       passenger: {
+  #         name: "Don't do dishes",
+  #         phone_num: '098-765-4321'
+  #       }
+  #     }
 
-      patch passenger_path(passenger), params: passenger_data
+  #     patch passenger_path(passenger), params: passenger_data
 
-      must_respond_with :redirect
-      must_redirect_to passenger_path(passenger)
+  #     must_respond_with :redirect
+  #     must_redirect_to passenger_path(passenger)
 
-      passenger.reload
-      expect(passenger.name).must_equal(passenger_data[:passenger][:name])
-    end
+  #     passenger.reload
+  #     expect(passenger.name).must_equal(passenger_data[:passenger][:name])
+  #   end
 
-    it 'will redirect to the root page if given an invalid id' do
-      get passenger_path(-1)
+  #   it "flashes an error if the passenger does not exist" do
+  #     passenger_id = 123456789
 
-      must_respond_with :redirect
-      must_redirect_to passengers_path
-    end
-  end
+  #     patch passenger_path(passenger_id), params: {}
 
-  describe "new" do
-    it 'can get the new passenger page' do
-      get new_passenger_path
+  #     must_respond_with :redirect
+  #     expect(flash[:error]).must_equal "Could not find passenger with id: #{passenger_id}"
+  #   end
+  # end
 
-      must_respond_with :success
-    end
-  end
+  # describe "new" do
+  #   it 'can get the new passenger page' do
+  #     get new_passenger_path
+
+  #     must_respond_with :success
+  #   end
+  # end
 
   describe "create" do
     it 'can create a new passenger' do
