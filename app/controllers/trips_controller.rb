@@ -56,22 +56,16 @@ class TripsController < ApplicationController
       return
     end
 
-    if trip.update(trip_params)
-      redirect_to trip_path(trip)
-    # else
-    #   render :edit, status: :bad_request
-    end
+    trip.update(trip_params)
+    redirect_to trip_path(trip)
   end
 
   def update_rating
     trip_id = params[:id]
     trip = Trip.find_by(id: trip_id)
 
-    if trip.update(rating: params[:rating])
-      redirect_to trip_path(trip)
-    # else
-    #   render :edit, status: :bad_request
-    end
+    trip.update(rating: params[:rating])
+    redirect_to trip_path(trip)
   end
 
   def delete
