@@ -1,13 +1,23 @@
 class TripsController < ApplicationController
 
   def create
-    @trip = Trip.new(trip_params)
+    @passenger = Passenger.find_by(id: passenger_id)
+    @driver = Driver.sample
+    @trip = Trip.new(
+    :driver_id => @driver.id,
+    :passenger_id => @passenger.id,
+    :date => Time.now,
+    :rating => '',
+    :cost => ''
+    )
+
     if @trip.save
       redirect_to trip_path(@trip.id)
     else
       render :new
     end
   end
+
 
   def index
     @trips = Trip.all.sort_by(&:id)

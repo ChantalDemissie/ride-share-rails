@@ -13,9 +13,10 @@ Rails.application.routes.draw do
   delete '/passengers/:id', to: 'passengers#destroy', as: 'delete_passenger'
 
   get '/passengers/:passenger_id/trips/:trip_id', to: 'trips#show', as: 'show_trip_details'
-  post '/trips', to: 'trips#create'
+  post '/trips', to: 'trips#new'
   patch '/trips/:id', to: 'trips#update', as: 'update_trip'
   post '/trips/:id/rating', to: 'trips#update_rating', as: 'update_rating'
+  post '/passengers/:passenger_id/trips/:trip_id', to: 'trips#create', as: 'request_trip'
 
   delete '/trips/:id', to: 'trips#destroy', as: 'delete_trip'
 

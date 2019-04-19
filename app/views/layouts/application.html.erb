@@ -10,13 +10,17 @@
   </head>
 
   <body>
-    <header>
-      <div>
-        <a><%= link_to 'Cabbie', home_path %></a> 
-        <a><%= link_to 'Home', home_path %></a> 
-      </div> 
 
+    <header>
       <div class="nav_list">
+      <div class="dropdown">
+          <button class="dropbtn">Cabbie 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a><%=link_to 'Home', home_path%></a>
+            </div>
+        </div>
         <div class="dropdown">
           <button class="dropbtn">Drivers 
             <i class="fa fa-caret-down"></i>
@@ -34,6 +38,8 @@
             <a><%= link_to 'View all Passengers', passengers_path %></a>
             <a><%= link_to 'Create a new Passenger', new_passenger_path %></a>
           </div>
+        </div>
+        <div class="nav_list">
         </div>
       </div>
     </header>
