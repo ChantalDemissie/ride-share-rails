@@ -21,4 +21,8 @@ class Driver < ApplicationRecord
     return total_earnings.round(2)
   end
 
+  validates_presence_of :name , :message => 'Must provide name'
+  validates_presence_of :vin ,:message => 'Must provide vin'
+
+
 end

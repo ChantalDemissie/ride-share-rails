@@ -3,6 +3,7 @@ class TripsController < ApplicationController
   def create
     @passenger = Passenger.find_by(id: passenger_id)
     @driver = Driver.sample
+
     @trip = Trip.new(
     :driver_id => @driver.id,
     :passenger_id => @passenger.id,
