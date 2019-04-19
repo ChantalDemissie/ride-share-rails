@@ -26,7 +26,6 @@
     <td><%= "$ #{trip.cost/100.to_f}"%></td> 
     <td><%= trip.rating%></td> 
     <td><%= link_to 'Details', show_trip_details_path(trip.passenger_id, trip.id)%></td> 
-
   </tr>
     <% end %>
 

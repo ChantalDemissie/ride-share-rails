@@ -18,7 +18,7 @@ class PassengersController < ApplicationController
   def show
     passenger_id = params[:id]
     @trips = Trip.where(passenger_id: passenger_id.to_i)
-    @earnings = @trips.map { |trip| trip.cost }.sum 
+    @earnings = @trips.map { |trip| trip.cost }.sum
   end
 
   def edit
@@ -58,8 +58,8 @@ end
 private
 
 def passenger_params
-    params.require(:task).permit(
-      :name,
-      :phone_num
-    )
+  params.require(:task).permit(
+    :name,
+    :phone_num
+  )
   end

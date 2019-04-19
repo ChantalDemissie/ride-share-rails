@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :drivers
   resources :passengers
 
+  get '/passengers', to: 'passengers#new', as: 'new_passenger'
   post '/passengers', to: 'passengers#create'
   get '/passengers/:id', to: 'passenger#show', as: 'show_passenger'
   patch '/passengers/:id', to: 'passengers#update'

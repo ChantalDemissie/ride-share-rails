@@ -2,7 +2,7 @@ require "test_helper"
 
 describe TripsController do
   let(:trip) do
-    Trip.create driver_id: 'sample trip', passenger_id:'111-222-3333', 
+    Trip.create driver_id: 'sample trip', passenger_id: '111-222-3333', 
     date: 'hdjsav', rating: 'fjadbv', cost: '2080'
   end
 
@@ -68,7 +68,7 @@ describe TripsController do
       must_redirect_to trip_path(trip)
 
       trip.reload
-      expect(trip.driver_id).must_equal(trip_data[:trip][:driver_id])
+      expect(trip.driver_id).must_equal(trip_hash[:trip][:driver_id])
     end
 
     it 'will redirect to the root page if given an invalid id' do

@@ -58,8 +58,8 @@ class TripsController < ApplicationController
 
     if trip.update(trip_params)
       redirect_to trip_path(trip)
-    else
-      render :edit, status: :bad_request
+    # else
+    #   render :edit, status: :bad_request
     end
   end
 
@@ -69,8 +69,8 @@ class TripsController < ApplicationController
 
     if trip.update(rating: params[:rating])
       redirect_to trip_path(trip)
-    else
-      render :edit, status: :bad_request
+    # else
+    #   render :edit, status: :bad_request
     end
   end
 
