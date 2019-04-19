@@ -97,7 +97,6 @@ private
 
 def trip_params
   params.require(:task).permit(
-    :id,
     :driver_id,
     :passenger_id,
     :date,

@@ -2,7 +2,7 @@ require "test_helper"
 
 describe PassengersController do
   let(:passenger) do
-    Passenger.create name: 'sample task', phone_num: '111-222-3333'
+    Passenger.create name: 'sample passenger', phone_num: '111-222-3333'
   end
 
   describe "index" do
