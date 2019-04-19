@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class TripsController < ApplicationController
-
   def create
     @trip = Trip.new(trip_params)
 
@@ -22,9 +21,8 @@ class TripsController < ApplicationController
         return
       end
     else
-    @trips = Trip.all.sort_by(&:id)
+      @trips = Trip.all.sort_by(&:id)
     end
-
   end
 
   def show
@@ -34,21 +32,23 @@ class TripsController < ApplicationController
   def edit
     trip_id = params[:id]
     @trip = Trip.find_by(id: trip_id)
-
-    head :not_found unless @trip
   end
 
   def update
-    trip_id = params[:id]
-    trip = Trip.find_by(id: trip_id)
-
-    unless trip
-      head :not_found
+    begin
+      trip_id = params[:id]
+      trip = Passenger.find(trip_id)
+    rescue
+      flash[:error] = "Could not find trip with id: #{params['id']}"
+      redirect_to trip_path(trip_id)
       return
     end
 
-    trip.update(trip_params)
-    redirect_to trip_path(trip)
+    if trip.update(trip_params)
+      redirect_to trip_path(trip_id)
+    else
+      render :new
+    end  
   end
 
   def update_rating

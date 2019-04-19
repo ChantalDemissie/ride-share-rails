@@ -6,62 +6,48 @@ describe TripsController do
     date: 'hdjsav', rating: 'fjadbv', cost: '2080'
   end
 
-  describe "index" do
+  # describe "index" do
     # it 'can get the index path' do
     #   get trips_path
 
     #   must_respond_with :success
     # end
 
-    it 'can get the root path' do
-      get root_path
+  #   it "works with no passengers" do
+  #     trip.destroy
+  #     get trips_path
+  #     must_respond_with :success
+  #   end
+  # end
 
-      must_respond_with :success
-    end
-  end
+  # describe "show" do
+    # it 'can get a valid trip' do
+    #   get trips_path(trip.id)
 
-  describe "show" do
-    it 'can get a valid trip' do
-      get trip_path(trip.id)
+    #   must_respond_with :success
+    # end
+  # end
 
-      must_respond_with :success
-    end
-
-    it 'will redirect for an invalid trip' do
-      get trip_path(-1)
-
-      must_respond_with :redirect
-    end
-  end
-
-  describe "edit" do
+  # describe "edit" do
     # it 'can get the edit page for an existing trip' do
     #   get edit_trip_path(trip)
 
     #   must_respond_with :success
     # end
-
-    it 'will respond with redirect when attempting to edit a nonexistant trip' do
-      get edit_trip_path(-1)
-
-      must_respond_with :redirect
-    end
-  end
+  # end
 
   describe "update" do
     it 'can update an existing trip' do
-      trip = Trip.create!(driver_id: 'sample trip', passenger_id:'111-222-3333', 
-      date: 'hdjsav', rating: 'fjadbv', cost: '2080')
+      trip = Trip.create!(driver_id: 'Do dishes', passenger_id: '123-456-7890', date: '2736', rating: 4, cost: 432)
       trip_hash = {
         trip: {
-          driver_id: "Don't do dishes",
-          passenger_id: '098-765-4321',
+          driver_id: 345,
+          passenger_id: 123,
           date: '098-765-4321',
-          rating: 'fjadbv',
+          rating: 3,
           cost: '2080'
         }
       }
-
       patch trip_path(trip), params: trip_hash
 
       must_respond_with :redirect
@@ -71,18 +57,18 @@ describe TripsController do
       expect(trip.driver_id).must_equal(trip_hash[:trip][:driver_id])
     end
 
-    it 'will redirect to the root page if given an invalid id' do
-      get trip_path(-1)
+    # it "flashes an error if the passenger does not exist" do
+    #   trip_id = 123456789
 
-      must_respond_with :redirect
-      must_redirect_to trips_path
-    end
+    #   patch trip_path(trip_id), params: {}
+
+    #   must_respond_with :redirect
+    #   expect(flash[:error]).must_equal "Could not find trip with id: #{trip_id}"
+    # end
   end
 
     describe "update_rating" do
     it 'can update a rating if it does not already exist for a trip' do
-      trip = Trip.create!(driver_id: 'sample trip', passenger_id:'111-222-3333', 
-      date: 'hdjsav', rating: nil, cost: '2080')
       trip_hash = {
         trip: {
           driver_id: "Don't do dishes",
@@ -92,7 +78,6 @@ describe TripsController do
           cost: '2080'
         }
       }
-
       patch trip_path(trip), params: (trip_hash[:trip][:rating])
 
       must_respond_with :redirect
@@ -100,13 +85,6 @@ describe TripsController do
 
       trip.reload
       expect(trip.rating).must_equal(trip_hash[:trip][:rating])
-    end
-
-    it 'will redirect to the root page if given an invalid id' do
-      get trip_path(-1)
-
-      must_respond_with :redirect
-      must_redirect_to trips_path
     end
   end
 
@@ -170,5 +148,5 @@ describe TripsController do
 
     #   must_respond_with :not_found
     # end
-  end
+  # end
 end

@@ -42,7 +42,6 @@ class PassengersController < ApplicationController
     else
       render :new
     end
-
   end
 
 
