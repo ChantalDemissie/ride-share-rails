@@ -32,12 +32,14 @@ class TripsController < ApplicationController
   def edit
     trip_id = params[:id]
     @trip = Trip.find_by(id: trip_id)
+    redirect_to trip_path if @trip.nil?
+
   end
 
   def update
     begin
       trip_id = params[:id]
-      trip = Passenger.find(trip_id)
+      trip = Trip.find(trip_id)
     rescue
       flash[:error] = "Could not find trip with id: #{params['id']}"
       redirect_to trip_path(trip_id)
@@ -55,7 +57,9 @@ class TripsController < ApplicationController
     trip_id = params[:id]
     trip = Trip.find_by(id: trip_id)
 
-    trip.update(rating: params[:rating])
+    rating = params[:rating]
+
+    trip.update(rating: rating)
     redirect_to trip_path(trip)
   end
 

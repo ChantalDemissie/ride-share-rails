@@ -36,26 +36,26 @@ describe TripsController do
     # end
   # end
 
-  describe "update" do
-    it 'can update an existing trip' do
-      trip = Trip.create!(driver_id: 'Do dishes', passenger_id: '123-456-7890', date: '2736', rating: 4, cost: 432)
-      trip_hash = {
-        trip: {
-          driver_id: 345,
-          passenger_id: 123,
-          date: '098-765-4321',
-          rating: 3,
-          cost: '2080'
-        }
-      }
-      patch trip_path(trip), params: trip_hash
+  # describe "update" do
+  #   it 'can update an existing trip' do
+  #     trip = Trip.create!(driver_id: 'Do dishes', passenger_id: '123-456-7890', date: '2736', rating: 4, cost: 432)
+  #     trip_hash = {
+  #       trip: {
+  #         driver_id: 345,
+  #         passenger_id: 123,
+  #         date: '098-765-4321',
+  #         rating: 3,
+  #         cost: '2080'
+  #       }
+  #     }
+  #     patch trip_path(trip), params: trip_hash
 
-      must_respond_with :redirect
-      must_redirect_to trip_path(trip)
+  #     must_respond_with :redirect
+  #     must_redirect_to trip_path(trip)
 
-      trip.reload
-      expect(trip.driver_id).must_equal(trip_hash[:trip][:driver_id])
-    end
+  #     trip.reload
+  #     expect(trip.driver_id).must_equal(trip_hash[:trip][:driver_id])
+  #   end
 
     # it "flashes an error if the passenger does not exist" do
     #   trip_id = 123456789
@@ -65,20 +65,21 @@ describe TripsController do
     #   must_respond_with :redirect
     #   expect(flash[:error]).must_equal "Could not find trip with id: #{trip_id}"
     # end
-  end
+  # end
 
-    describe "update_rating" do
+  describe "update_rating" do
     it 'can update a rating if it does not already exist for a trip' do
+      trip = Trip.create!(driver_id: 'Do dishes', passenger_id: '123-456-7890', date: '2736', rating: nil, cost: 432)
       trip_hash = {
         trip: {
           driver_id: "Don't do dishes",
           passenger_id: '098-765-4321',
           date: '098-765-4321',
-          rating: nil,
+          rating: 5,
           cost: '2080'
         }
       }
-      patch trip_path(trip), params: (trip_hash[:trip][:rating])
+      patch trip_path(trip), params: trip_hash
 
       must_respond_with :redirect
       must_redirect_to trip_path(trip)
