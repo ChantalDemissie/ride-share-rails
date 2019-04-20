@@ -46,14 +46,13 @@ class PassengersController < ApplicationController
 
 
   def destroy
-    passenger_id = params[:id]
-    passenger = Passenger.find_by(id: passenger_id)
-
-    unless passenger
-      head :not_found
+    begin
+      passenger = Passenger.find(params[:id])
+    rescue
+      flash[:error] = "Could not find passenger with id: #{params['id']}"
+      redirect_to passengers_path
       return
     end
-
     passenger.destroy
     redirect_to passengers_path
   end
