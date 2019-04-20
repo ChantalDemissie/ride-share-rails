@@ -113,7 +113,7 @@ describe PassengersController do
       expect(after_passenger).must_be_nil
     end
 
-    it "flashes an error if the driver does not exist" do
+    it "flashes an error if the passenger does not exist" do
       passenger_id = 123456789
 
       expect {

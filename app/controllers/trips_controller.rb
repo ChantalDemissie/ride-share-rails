@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class TripsController < ApplicationController
+
+  def new
+    @trip = Trip.new
+  end
+
   def create
     @trip = Trip.new(trip_params)
 
@@ -12,17 +17,7 @@ class TripsController < ApplicationController
   end
 
   def index
-    if params[:passenger_id]
-      passenger = Trip.find_by(id: params[:passenger_id])
-      if passenger
-        @trips = passenger.trips
-      else
-        head :not_found
-        return
-      end
-    else
       @trips = Trip.all.sort_by(&:id)
-    end
   end
 
   def show
@@ -33,7 +28,6 @@ class TripsController < ApplicationController
     trip_id = params[:id]
     @trip = Trip.find_by(id: trip_id)
     redirect_to trip_path if @trip.nil?
-
   end
 
   def update
@@ -53,32 +47,30 @@ class TripsController < ApplicationController
     end  
   end
 
-  def update_rating
-    trip_id = params[:id]
-    trip = Trip.find_by(id: trip_id)
-
-    rating = params[:rating]
-
-    trip.update(rating: rating)
-    redirect_to trip_path(trip)
+  def update_rating(rating)
+    begin
+      trip_id = params[:id]
+      @trip = Trip.find(trip_id)
+    rescue
+      flash[:error] = "Could not find trip with id: #{params['id']}"
+      redirect_to trip_path(trip_id)
+      return
+    end
+    
+    @trip.update(trip_params)
+    redirect_to trip_path(trip_id)
   end
 
   def destroy
-    trip_id = params[:id]
-
-    trip = Trip.find_by(id: trip_id)
-
-    unless trip
-      head :not_found
+    begin
+      trip = Trip.find(params[:id])
+    rescue
+      flash[:error] = "Could not find trip with id: #{params['id']}"
+      redirect_to trips_path
       return
     end
-
     trip.destroy
     redirect_to trips_path
-  end
-
-  def new
-    @trip = Trip.new
   end
 end
 

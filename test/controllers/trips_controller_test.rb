@@ -138,16 +138,15 @@ describe TripsController do
       expect(after_trip).must_be_nil
     end
 
-    it 'returns a 404 if the trip does not exist' do
-      trip_id = 123_456
+    it "flashes an error if the trip does not exist" do
+      trip_id = 123456789
 
-      expect(Trip.find_by(id: trip_id)).must_be_nil
-
-      expect do
+      expect {
         delete trip_path(trip_id)
-      end.wont_change 'Trip.count'
+      }.wont_change "Trip.count"
 
-      must_respond_with :not_found
+      must_respond_with :redirect
+      expect(flash[:error]).must_equal "Could not find trip with id: #{trip_id}"
     end
   end
 end

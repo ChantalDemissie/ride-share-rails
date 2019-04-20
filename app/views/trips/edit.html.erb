@@ -1,5 +1,15 @@
 <h2>Edit Trip Form</h2>
 
+<% if @trip.errors.any? %>
+  <ul class="errors">
+    <% @trip.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @Passenger, class: 'edit_trip' do |f| %>
 <p><strong>Please fill out the EDIT details of your Trip</strong></p>
 
@@ -29,6 +39,6 @@
   </div>
 
 
-  <%= f.submit "Edit this Trip", class: 'edit_class_button' %>
+  <%= f.submit "Edit this Trip"%>
 
 <% end %>

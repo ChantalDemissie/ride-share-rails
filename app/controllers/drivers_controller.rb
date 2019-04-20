@@ -5,13 +5,11 @@ class DriversController < ApplicationController
   end
 
   def create
-    #TODO: validate 17-digit VIN
     @driver = Driver.new(
       name: params[:driver][:name],
       vin: params[:driver][:vin]
     )
     if @driver.save
-      #error validation required
       redirect_to drivers_path
     else
       render :new
@@ -26,7 +24,6 @@ class DriversController < ApplicationController
     @driver = Driver.find(params[:id])
   end
 
-  #edit a driver
   def edit
     @driver = Driver.find(params[:id])
   end
@@ -50,7 +47,6 @@ class DriversController < ApplicationController
     end
   end
 
-  #delete driver
   def destroy
     begin
       driver = Driver.find(params[:id])

@@ -2,17 +2,23 @@
 
 class PassengersController < ApplicationController
 
-  def create
-    @passenger = Passenger.new(passenger_params)
-    if @passenger.save
-      redirect_to passenger_path(@passenger.id)
-    else
-      render :new
-    end
+  def new
+    @passenger = Passenger.new
   end
 
   def index
     @passengers = Passenger.all.sort_by(&:id)
+  end
+
+  def create
+    @passenger = Passenger.new(passenger_params)
+
+    successful = @passenger.save
+    if successful
+      redirect_to passengers_path(@passenger_id )
+    else
+      render :new, status: :bad_request
+    end
   end
 
   def show
@@ -44,7 +50,6 @@ class PassengersController < ApplicationController
     end
   end
 
-
   def destroy
     begin
       passenger = Passenger.find(params[:id])
@@ -57,10 +62,6 @@ class PassengersController < ApplicationController
     redirect_to passengers_path
   end
 
-  def new
-    @passenger = Passenger.new
-  end
-  
 end
 
 private
