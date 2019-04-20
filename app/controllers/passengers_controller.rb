@@ -13,11 +13,10 @@ class PassengersController < ApplicationController
   def create
     @passenger = Passenger.new(passenger_params)
 
-    successful = @passenger.save
-    if successful
-      redirect_to passengers_path(@passenger_id )
+    if @passenger.save
+      redirect_to passengers_path
     else
-      render :new, status: :bad_request
+      render :new
     end
   end
 

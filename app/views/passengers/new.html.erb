@@ -10,7 +10,7 @@
   </ul>
 <% end %>
 
-<%= form_with model: @Passenger, class: 'create_passenger' do |f| %>
+<%= form_with model: @passenger do |f| %>
 <p><strong>Please fill out the details of your Passenger</strong></p>
 
   <div>
@@ -19,10 +19,10 @@
   </div>
 
   <div>
-    <%= f.label :description, "Phone Number:" %>
-    <%= f.text_field :description, placeholder: "111-222-3333" %>
+    <%= f.label :phone_num, "Phone Number:" %>
+    <%= f.text_field :phone_num, placeholder: "111-222-3333" %>
   </div>
 
-  <%= f.submit "Create A New Passenger" %>
+  <%= f.submit "Submit" %>
 
 <% end %>

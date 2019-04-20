@@ -44,10 +44,10 @@ class TripsController < ApplicationController
       redirect_to trip_path(trip_id)
     else
       render :new
-    end  
+    end
   end
 
-  def update_rating(rating)
+  def update_rating
     begin
       trip_id = params[:id]
       @trip = Trip.find(trip_id)
@@ -57,8 +57,9 @@ class TripsController < ApplicationController
       return
     end
     
-    @trip.update(trip_params)
-    redirect_to trip_path(trip_id)
+    rating = params[:rating]
+    @trip.update(rating: rating)
+    redirect_to show_trip_details_path(@trip.passenger_id, trip_id)
   end
 
   def destroy
