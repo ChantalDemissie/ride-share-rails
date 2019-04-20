@@ -11,7 +11,7 @@
 <% end %>
 
 
-<%= form_with model: @Passenger, class: 'edit_passenger' do |f| %>
+<%= form_with model: @passenger do |f| %>
 <p><strong>Edit Passenger Details</strong></p>
 
   <div>
@@ -20,10 +20,10 @@
   </div>
 
   <div>
-    <%= f.label :description, "Phone Number:" %>
-    <%= f.text_field :description, placeholder: "111-222-3333" %>
+    <%= f.label :phone_num, "Phone Number:" %>
+    <%= f.text_field :phone_num, placeholder: "111-222-3333" %>
   </div>
 
-  <%= f.submit "Edit this Passenger"%>
+  <%= f.submit "Submit"%>
 
 <% end %>

@@ -6,11 +6,17 @@
   color: #353535
 }
 
+.nav_list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 header {
   background-color: #EFEFF0;
-  display: grid;
-  grid-column: span 2;
+}
 
+.company_name {
+  margin: 0 100px;
 }
 
 .main_options li {
