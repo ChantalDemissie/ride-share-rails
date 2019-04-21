@@ -4,6 +4,7 @@
 
 <div class='rating'>
   <%= form_with url: update_rating_path(@trip.id) do |form| %>
+    <%= form.label 'Please rate your ride: ' %>
     <%= form.select(:rating, [["1", 1], ["2", 2], ["3", 3],["4",4],["5",5]]) %>
     <%= form.submit 'Save', class: 'button expand' %>
   <% end %>
