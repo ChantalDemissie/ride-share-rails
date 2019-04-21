@@ -21,12 +21,12 @@
   </tr>
 
   <tr>
-    <td><%= link_to @trip.id%></td> 
-    <td><%= link_to @trip.date%></td> 
-    <td><%= link_to @trip.driver_id, driver_path(@trip.driver_id)%></td> 
-    <td><%= link_to @trip.passenger_id, passenger_path(@trip.passenger_id)%></td> 
-    <td><%= link_to "$ #{@trip.cost/100.to_f}"%></td> 
-    <td><%= link_to @trip.rating%></td> 
+    <td><%= link_to @trip.id%></td>
+    <td><%= link_to @trip.date%></td>
+    <td><%= link_to @trip.driver_id, driver_path(@trip.driver_id)%></td>
+    <td><%= link_to @trip.passenger_id, passenger_path(@trip.passenger_id)%></td>
+    <td><%= link_to "$ #{@trip.cost/100.to_f}"%></td>
+    <td><%= link_to @trip.rating%></td>
     <td><%= link_to "Edit", edit_trip_path(@trip.id) %></td>
     <td><%= link_to "Delete", trip_path(@trip.id), method: :delete, data: { confirm: "Do you really want to delete?" } %></td>
 
