@@ -1,11 +1,14 @@
 <h2>Trip Details</h2>
 
-<%= form_with url: update_rating_path(@trip.id) do |form| %>
-  <%= form.select(:rating, [["1", 1], ["2", 2], ["3", 3],["4",4],["5",5]]) %>
-  <%= form.submit 'Save', class: 'button expand' %>
-<% end %>
+<h2>Update Rating</h2>
 
-<table class='trip_details'>
+<div class='rating'>
+  <%= form_with url: update_rating_path(@trip.id) do |form| %>
+    <%= form.select(:rating, [["1", 1], ["2", 2], ["3", 3],["4",4],["5",5]]) %>
+    <%= form.submit 'Save', class: 'button expand' %>
+  <% end %>
+</div>
+<table>
 
   <tr>
     <th>ID</th>
