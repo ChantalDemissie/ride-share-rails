@@ -54,7 +54,7 @@ describe PassengersController do
       patch passenger_path(passenger), params: passenger_data
 
       must_respond_with :redirect
-      must_redirect_to passenger_path(passenger)
+      must_redirect_to passengers_path
 
       passenger.reload
       expect(passenger.name).must_equal(passenger_data[:passenger][:name])
@@ -94,7 +94,7 @@ describe PassengersController do
       expect(new_passenger.phone_num).must_equal passenger_hash[:passenger][:phone_num]
 
       must_respond_with :redirect
-      must_redirect_to passenger_path(new_passenger.id)
+      must_redirect_to passengers_path
     end
   end
 
