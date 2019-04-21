@@ -67,7 +67,6 @@ a:hover,.dropdown:hover .dropbtn {
   background-color: #EAF0CE
 }
 
-
 .dropdown-content {
   display: none;
   position: absolute;
@@ -112,7 +111,11 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-h2, .rating {
+h2, .rating, form {
   margin-left: 20px;
+}
+
+form div {
+  margin: 0 10px 20px 0px;
 }
 
