@@ -2,7 +2,7 @@ require "test_helper"
 
 describe TripsController do
   let(:trip) do
-    Trip.create driver_id: 'sample trip', passenger_id: '111-222-3333', 
+    Trip.create driver_id: 'sample trip', passenger_id: '111-222-3333',
     date: 'hdjsav', rating: 'fjadbv', cost: '2080'
   end
 
@@ -69,7 +69,13 @@ describe TripsController do
 
   describe "update_rating" do
     it 'can update a rating if it does not already exist for a trip' do
-      trip = Trip.create!(driver_id: 'Do dishes', passenger_id: '123-456-7890', date: '2736', rating: nil, cost: 432)
+      trip = Trip.create!(
+        driver_id: 'Do dishes',
+        passenger_id: '123-456-7890',
+        date: '2736',
+        rating: nil,
+        cost: 432
+      )
       trip_hash = {
         trip: {
           driver_id: "Don't do dishes",
@@ -124,7 +130,7 @@ describe TripsController do
 
   describe "destroy" do
     it 'removes the trip from the database' do
-      trip = Trip.create!(driver_id: 'sample trip', passenger_id:'111-222-3333', 
+      trip = Trip.create!(driver_id: 'sample trip', passenger_id:'111-222-3333',
       date: 'hdjsav', rating: 'fjadbv', cost: '2080')
 
       expect do
