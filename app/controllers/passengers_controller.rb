@@ -22,6 +22,7 @@ class PassengersController < ApplicationController
 
   def show
     passenger_id = params[:id]
+    @passenger = Passenger.find(passenger_id)
     @trips = Trip.where(passenger_id: passenger_id.to_i)
     @earnings = @trips.map { |trip| trip.cost }.sum
   end

@@ -1,6 +1,18 @@
-<h2>Passenger Trip Details</h2>
+<h2>Passenger Details</h2>
+<% if @passenger %>
+  <ul>
+  <li>ID: <%= @passenger.id %></li>
+  <li>Name: <%= @passenger.name %></li>
+  <li>Phone Number: <%= @passenger.phone_num %></li>
+  </ul>
+<% else %>
+  <i><h2>Passenger with ID <%= params[:id] %> has been deleted</h2></i>
+<% end %>
+
+<h2>Trips Passenger Has Taken</h2>
 <h2>The total amount spent on rides is: $<%=@earnings/100.to_f%></h2>
-<h2><%= link_to 'Request a trip', new_trip_path%></h2> 
+<h2><%= link_to 'Request a trip', new_trip_path%></h2>
+
 
 
 <table>
@@ -19,13 +31,19 @@
     <% @trips.each do | trip | %>
   <tr>
 
-    <td><%= trip.id%></td> 
-    <td><%= trip.date%></td> 
-    <td><%= trip.driver_id%></td> 
-    <td><%= trip.passenger_id%></td> 
-    <td><%= "$ #{trip.cost/100.to_f}"%></td> 
-    <td><%= trip.rating%></td> 
-    <td><%= link_to 'Details', show_trip_details_path(trip.passenger_id, trip.id)%></td> 
+    <td><%= trip.id%></td>
+    <td><%= trip.date%></td>
+    <td><%= trip.driver_id%></td>
+    <td><%= trip.passenger_id%></td>
+    <td><%= "$ #{trip.cost/100.to_f}"%></td>
+    <td>
+      <% unless trip.rating.nil? %>
+        <%= trip.rating %>
+      <% else %>
+        none
+      <% end %>
+    </td>
+    <td><%= link_to 'Details', trip_path(trip.id)%></td>
   </tr>
     <% end %>
 

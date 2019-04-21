@@ -10,32 +10,32 @@
   </ul>
 <% end %>
 
-<%= form_with model: @Passenger, class: 'edit_trip' do |f| %>
-<p><strong>Please fill out the EDIT details of your Trip</strong></p>
+<%= form_with model: @trip, class: 'edit_trip' do |f| %>
+<p><strong>Please fill out the details of your trip</strong></p>
 
   <div>
     <%= f.label :date, "Date:" %>
-    <%= f.text_field :name, placeholder: "Name" %>
+    <%= f.text_field :date, placeholder: Date.today.to_s %>
   </div>
 
   <div>
-    <%= f.label :price, "Price:" %>
-    <%= f.text_field :description, placeholder: "111-222-3333" %>
+    <%= f.label :cost, "Cost:" %>
+    <%= f.text_field :cost, placeholder: "$0.00", value: @trip.cost.to_f / 100 %>
   </div>
 
     <div>
-    <%= f.label :passenger, "Passenger:" %>
-    <%= f.text_field :description, placeholder: "111-222-3333" %>
+    <%= f.label :passenger_id, "Passenger:" %>
+    <%= f.text_field :passenger_id, placeholder: "ID" %>
   </div>
 
   <div>
     <%= f.label :rating, "Rating:" %>
-    <%= f.text_field :description, placeholder: "111-222-3333" %>
+    <%= f.text_field :rating, placeholder: "1-5" %>
   </div>
 
   <div>
-    <%= f.label :driver, "Driver:" %>
-    <%= f.text_field :description, placeholder: "111-222-3333" %>
+    <%= f.label :driver_id, "Driver:" %>
+    <%= f.text_field :driver_id, placeholder: "ID" %>
   </div>
 
 

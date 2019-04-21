@@ -1,5 +1,12 @@
-<h2>Name: <%= @driver.name %></h2>
-<h2>VIN: <%= @driver.vin %></h2>
+<h2>Driver Details</h2>
+<% if @driver %>
+  <ul>
+  <li>Name: <%= @driver.name %></li>
+  <li>VIN: <%= @driver.vin %></li>
+  </ul>
+<% else %>
+  <i><h2>Driver with ID <%= params[:id] %> has been deleted</h2></i>
+<% end %>
 <h2>Total amount earned: $<%= @driver.total_earnings %> </h2>
 <h2>Average Rating: <%= @driver.average_rating %> </h2>
 <h2>List of Trips Driver Has Driven<h2>
@@ -16,13 +23,19 @@
 
   <% @driver.trips.each do |trip| %>
   <tr>
-    <td><%= trip.id%></td>
-    <td><%= trip.date%></td>
-    <td><%= trip.driver_id%></td>
-    <td><%= trip.passenger_id%></td>
-    <td><%= "$ #{trip.cost/100.to_f}"%></td>
-    <td><%= trip.rating%></td>
-    <td><%= link_to 'Details', show_trip_details_path(trip.passenger_id, trip.id)%></td>
+    <td><%= trip.id %></td>
+    <td><%= trip.date %></td>
+    <td><%= trip.driver_id %></td>
+    <td><%= trip.passenger_id %></td>
+    <td><%= "$ #{trip.cost/100.to_f}" %></td>
+    <td>
+      <% unless trip.rating.nil? %>
+        <%= trip.rating %>
+      <% else %>
+        none
+      <% end %>
+    </td>
+    <td><%= link_to 'Details', trip_path(trip.id) %></td>
   </tr>
   <% end %>
 

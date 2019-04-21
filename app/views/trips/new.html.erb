@@ -1,33 +1,36 @@
 <h2>Request Trip Form</h2>
 
-<%= form_with model: @trip do |f| %>
-<p><strong>Please fill out the details of your Trip Request</strong></p>
+<% if @trip.errors.any? %>
+  <ul class="errors">
+    <% @trip.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
+<%= form_with model: @trip do |f| %>
+<p><strong>Please fill out the details of your trip</strong></p>
   <div>
     <%= f.label :date, "Date:" %>
-    <%= f.text_field :date, placeholder: "Name" %>
+    <%= f.text_field :date, placeholder: Date.today.to_s %>
   </div>
 
   <div>
-    <%= f.label :price, "Price:" %>
-    <%= f.text_field :price, placeholder: "111-222-3333" %>
+    <%= f.label :cost, "Cost:" %>
+    <%= f.text_field :cost, placeholder: "$0.00" %>
   </div>
 
-    <div>
+  <div>
     <%= f.label :passenger, "Passenger:" %>
-    <%= f.text_field :passenger, placeholder: "111-222-3333" %>
-  </div>
-
-  <div>
-    <%= f.label :rating, "Rating:" %>
-    <%= f.text_field :rating, placeholder: "111-222-3333" %>
+    <%= f.text_field :passenger, placeholder: "ID" %>
   </div>
 
   <div>
     <%= f.label :driver, "Driver:" %>
-    <%= f.text_field :driver, placeholder: "111-222-3333" %>
+    <%= f.text_field :driver, placeholder: "ID", value: @driver_id %>
   </div>
-
 
   <%= f.submit "Request this Trip"%>
 

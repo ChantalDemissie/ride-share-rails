@@ -4,10 +4,19 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+
+    # Pick a random driver.
+    @driver_id = Driver.all.sample.id
   end
 
   def create
-    @trip = Trip.new(trip_params)
+    @trip = Trip.new(
+      driver_id: params[:trip][:driver],
+      passenger_id: params[:trip][:passenger],
+      date: params[:trip][:date],
+      cost: (params[:trip][:cost].to_f * 100.0).to_i,
+      rating: nil
+    )
 
     if @trip.save
       redirect_to trip_path(@trip.id)
@@ -21,7 +30,7 @@ class TripsController < ApplicationController
   end
 
   def show
-    @trip = Trip.find_by_id(params[:trip_id])
+    @trip = Trip.find(params[:id])
   end
 
   def edit
@@ -56,10 +65,10 @@ class TripsController < ApplicationController
       redirect_to trip_path(trip_id)
       return
     end
-    
+
     rating = params[:rating]
     @trip.update(rating: rating)
-    redirect_to show_trip_details_path(@trip.passenger_id, trip_id)
+    redirect_to trip_path(trip_id)
   end
 
   def destroy
