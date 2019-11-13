@@ -1,6 +1,3 @@
-My Completed Project URL:
-http://candr-rideshare.herokuapp.com/
-
 # Rideshare Rails
 
 ## At a Glance
